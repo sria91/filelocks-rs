@@ -1,0 +1,28 @@
+[package]
+name = "filelocks"
+authors = [
+    "Srikanth Anantharam <sria91@gmail.com>",
+    "GitHub Copilot <copilot@github.com>",
+    "Anthropic Claude <claude@anthropic.com>",
+    "OpenAI Codex <codex@openai.com>",
+]
+version = "0.1.0"
+edition = "2021"
+description = "Platform-native file locking with blocking and non-blocking support"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/sria91/filelocks-rs"
+documentation = "https://docs.rs/filelocks"
+keywords = ["file", "lock", "flock", "advisory", "locking"]
+categories = ["filesystem", "os"]
+readme = "README.md"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[target.'cfg(windows)'.dependencies]
+[target.'cfg(windows)'.dependencies.windows-sys]
+version = "0.61"
+features = ["Win32_Foundation", "Win32_Storage_FileSystem", "Win32_System_IO"]
+
+[dev-dependencies]
+tempfile = "3"
